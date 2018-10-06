@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './Login/Login'
 import TimeTracker from './TimeTracker/TimeTracker'
+import TimeList from './TimesList/TimeList'
 class App extends Component {
 
 
@@ -21,6 +22,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Login} />
               <Route path="/TimeTracker" component={TimeTracker} />
+              <Route path="/TimeList" component={TimeList} />
             </Switch>
           </Router>
         </div>

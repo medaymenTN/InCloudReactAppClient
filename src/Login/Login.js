@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { SERVER_BASE_URL } from '../configuration/Config'
-
+import {Redirect} from 'react-router-dom';
 import axios from 'axios'
 class Login extends Component {
 
@@ -12,7 +12,8 @@ class Login extends Component {
     constructor() {
         super()
         this.state = {
-            username: ''
+            username: '',
+            toHome:false
         }
 
         this.handleClick = this.handleClick.bind(this)
@@ -33,11 +34,14 @@ class Login extends Component {
                 this.setState({ username: response.data.username })
                 //storing connected user into localstorage
                 localStorage.setItem('user', JSON.stringify(response.data))
-
+               // redirect to the main page 
+              this.setState({
+                  toHome:true
+              })
 
             })
 
-
+            
     }
     handleChange = (event) => {
         this.setState({
@@ -45,6 +49,10 @@ class Login extends Component {
         });
     };
     render() {
+        //navigate to the main page 
+        if (this.state.toHome === true) {
+            return <Redirect to="/TimeTracker" />
+          }
         return (
             <Flexbox flexDirection="column" minHeight="100vh" maxWidth="60vh" >
                 <TextField
