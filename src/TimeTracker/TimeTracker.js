@@ -111,7 +111,12 @@ class TimeTracker extends Component {
             })
             .then(response => {
                 alert('success')
+                // clear textfield input 
+                this.setState({
+                    description:''
+                })
             })
+
         //close the dialog after finishing the operation
         this.handleClose()
 
