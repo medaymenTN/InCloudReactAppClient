@@ -31,11 +31,13 @@ class TimesList extends Component {
   componentDidMount() {
 
     axios.get(`${SERVER_BASE_URL}/trackers`).then((Response) => {
-      console.log(Response.data)
+    
       this.setState({
         times: Response.data.items,
         offset: Response.data.current_page,
-        total: Response.data.total_count
+        //adjusting pagination to load pages numbers according to itmes loaded 
+        //math.round()  generate default  value of a float so that we add +1 one to get the right value
+        total: Math.round(Response.data.total_count/5)+1
       })
 
     })
