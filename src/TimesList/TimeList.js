@@ -70,7 +70,7 @@ class TimesList extends Component {
               //using moment js to adjust datetime format 
               return <ListItem key={i}>
 
-                <ListItemText primary={item.description} secondary={moment(item.time).format("YYYY-MM-DD HH:mm:ss")} />
+                <ListItemText primary={item.description} secondary={moment(item.time).utc(0).format("YYYY-MM-DD HH:mm:ss")} />
                 <ListItemSecondaryAction>
                    Created By : {item.user.username}
                  </ListItemSecondaryAction>
